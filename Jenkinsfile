@@ -6,6 +6,11 @@ pipeline {
                 echo 'Testing...'
                 sh "./gradlew test"
             }
+            post {
+                always {
+                    junit '**/target/*.xml'
+                }
+            }
         }
         stage('Build') {
             steps {
