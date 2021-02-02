@@ -1,6 +1,12 @@
 pipeline {
     agent any
     stages {
+        stage('Build') {
+            steps {
+                echo 'Building...'
+                sh "./gradlew clean build"
+            }
+        }
         stage('Test') {
             steps {
                 echo 'Testing...'
@@ -10,11 +16,6 @@ pipeline {
                 always {
                     junit testResults: '**/test-results/test/*.xml'
                 }
-            }
-        }
-        stage('Build') {
-            steps {
-                echo 'BUILD'
             }
         }
         stage('Deploy') {
