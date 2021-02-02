@@ -28,3 +28,9 @@ application {
     // Define the main class for the application.
     mainClass = 'com.gsam.App'
 }
+
+test {
+    testLogging {
+        showStandardStreams = true
+    }
+}
