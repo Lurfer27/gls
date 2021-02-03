@@ -4,23 +4,23 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building...'
-                sh "./gradlew clean build"
+                sh './gradlew build'
             }
         }
         stage('Test') {
             steps {
                 echo 'Testing...'
-                sh "./gradlew cleanTest test"
+                sh './gradlew test'
             }
             post {
                 always {
-                    junit testResults: '**/test-results/test/*.xml'
+                    junit allowEmptyResults: true, testResults: 'app/build/test-results/test/*.xml'
                 }
             }
         }
         stage('Deploy') {
             steps {
-                echo 'DEPLOY'
+                echo 'Deploying...'
             }
         }
     }
